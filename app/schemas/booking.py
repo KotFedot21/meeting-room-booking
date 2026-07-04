@@ -1,6 +1,11 @@
 from pydantic import BaseModel, validator
 from datetime import date, time
 from typing import Optional
+from enum import Enum
+
+class BookingStatus(str, Enum):
+    ACTIVE = "active"
+    CANCELLED = "cancelled"
 
 class BookingBase(BaseModel):
     room_id: int
@@ -20,7 +25,7 @@ class BookingCreate(BookingBase):
 class BookingResponse(BookingBase):
     id: int
     user_id: int
-    status: str
+    status: BookingStatus
 
     class Config:
         from_attributes = True

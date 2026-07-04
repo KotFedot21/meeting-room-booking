@@ -8,7 +8,6 @@ class TimeSlotBase(BaseModel):
 
 class TimeSlotResponse(TimeSlotBase):
     id: int
-    room_id: int
 
     class Config:
         from_attributes = True
@@ -17,6 +16,9 @@ class RoomBase(BaseModel):
     name: str
     capacity: int
     description: Optional[str] = None
+
+class RoomCreate(RoomBase):
+    pass
 
 class RoomResponse(RoomBase):
     id: int
